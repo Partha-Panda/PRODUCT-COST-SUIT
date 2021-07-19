@@ -1,0 +1,14 @@
+.masterdataMidCont{
+    margin-top: 100px;
+    margin-left: 50px;
+    align-self: flex-start;
+    
+}
+.MuiOutlinedInput-input {
+    padding: 8.5px 14px;
+}
+
+
+.MuiTypography-body2 {
+    font-size: 200%;
+}

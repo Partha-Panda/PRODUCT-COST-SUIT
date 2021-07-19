@@ -1,0 +1,115 @@
+
+.loginContainer{
+    background-color:rgb(245, 238, 238);
+    height:100vh;
+    width: 100%;
+}
+.navlogin{
+    width: 100vw;
+    height: 45px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 75%);
+    -webkit-box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 75%);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    align-items: center;
+}
+.loginnavHeading{
+    position: relative;
+    color:rgb(245, 90, 0);
+    font-weight: 400;
+    left: 25%;
+    font-weight: 700;
+}
+.loginFormCont{
+    position: relative;
+    /* margin-top: 50px; */
+    /* left: 23%; */
+    /* height: 272px; */
+    margin: 50px auto 0 auto;
+    width: 49%;
+    /* padding: 10px; */
+    /* padding: 20px; */
+    background-color: rgb(255, 255, 255);
+    /* display: flex; */
+    /* flex-direction: column; */
+    border: 0.2px solid rgb(221, 218, 218);
+    
+}
+.loginCenter form {
+    padding: 10% 2% 2% 62%;
+}
+.loginFormHeading{
+    width: 100%;
+    /* height: 43px; */
+    background-color: rgb(228, 228, 228);
+    /* margin-bottom: 10px; */
+    border-bottom: 0.2px solid rgb(221, 218, 218);
+    
+}
+.loginFormHeading h2{
+    padding: 7px 10px 10px 10px;
+    margin: 0px;
+    font-size: 18px;
+}
+.emaillabel{
+    width: 100px;
+}
+.emaildiv{
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+.emaildiv label {
+    width: 43%;
+    float: left;
+    padding-top: 10px;
+}
+.emaildiv input {
+    width: 70%;
+    float: left;
+}
+#ps{ 
+    width: 100%;
+    height: 23px;
+    padding: 19px 12px;
+    background-color: #fff;
+    border: 1px solid #ccd0d2;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    margin-bottom: 18px;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+
+}
+#email{
+    
+    width: 100%;
+    height: 23px;
+    padding: 19px 12px;
+    background-color: #fff;
+    border: 1px solid #ccd0d2;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    margin-bottom: 18px;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+#loginbtn{
+    margin-left: 114%;
+    background-color: #1F60F0;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    margin-top: -6px;
+    padding: 10px;
+    width: 83%;
+}
+.loginCenter{
+    justify-content: center;
+    align-items: center;
+    
+    width: 320px;
+    align-self: center;
+}

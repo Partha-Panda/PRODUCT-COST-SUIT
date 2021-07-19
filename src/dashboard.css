@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+.DashoardCont{
+    background-color: rgb(247, 247, 247);
+    height: 100vh;
+    
+}
+.dashBoardListCont{
+    margin-top: 80px;
+    color: rgb(49, 135, 247);
+}
+.dashboardMidCont{
+    display: flex;
+    flex-direction: column;
+    width: 78vw;
+}
+.dashboardTag{
+    font-size: 24px;
+    border-bottom: 1px solid rgb(224, 220, 220);
+    width: 95%;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.dashHeadTag{
+    border: 1px solid rgb(224, 220, 220);
+    width: 95%;
+    margin-top: 73px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.dashHeadTag p{
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.dashHeadTag h1{
+    font-family: 'Bebas Neue', cursive;
+    text-transform:capitalize ;
+    letter-spacing: 3px;
+    font-size: 64px;
+    color: rgb(45, 147, 243);
+    
+}

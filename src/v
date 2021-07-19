@@ -1,0 +1,105 @@
+ <form action="">
+
+                                <Grid container className={classes.grditm}>
+                                    <Grid item xs={4}><h5>Metal</h5></Grid>
+                                    <Grid item xs={8}>
+                                        <TextField
+                                            className={classes.txtfld}
+                                            required
+                                            id="outlined-select-currency-native"
+                                            select
+                                            label="Requir"
+                                            value={metal}
+                                            onChange={handleChange}
+                                            SelectProps={{
+                                                native: true,
+                                            }}
+
+                                            variant="outlined"
+                                        >
+                                            {metals.map((option) => (
+                                                <option key={option.value} value={option.value}>
+                                                    {option.label}
+                                                </option>
+                                            ))}
+                                        </TextField>
+                                    </Grid>
+                                </Grid>
+                                <Grid container className={classes.grditm}>
+                                    <Grid item xs={4}><h5>Category</h5></Grid>
+                                    <Grid item xs={8}>
+                                        <TextField
+                                            className={classes.txtfld}
+                                            required
+                                            id="outlined-select-currency-native"
+                                            select
+                                            label="Requir"
+                                            value={category}
+                                            onChange={(event) => setCategory(event.target.value)}
+                                            SelectProps={{
+                                                native: true,
+                                            }}
+
+                                            variant="outlined"
+                                        >
+                                            {Categores.map((option) => (
+                                                <option key={option.value} value={option.value}>
+                                                    {option.label}
+                                                </option>
+                                            ))}
+                                        </TextField>
+                                    </Grid>
+                                </Grid>
+                                <Grid container className={classes.grditm}>
+                                    <Grid item xs={4}><h5>Grade</h5></Grid>
+                                    <Grid item xs={8}>
+                                        <TextField
+                                            className={classes.txtfld}
+                                            required
+                                            id="outlined-select-currency-native"
+                                            select
+                                            label="Requir"
+                                            value={grade}
+                                            onChange={(event) => setCategory(event.target.value)}
+                                            SelectProps={{
+                                                native: true,
+                                            }}
+
+                                            variant="outlined"
+                                        >
+                                            {Grade.map((option) => (
+                                                <option key={option.value} value={option.value}>
+                                                    {option.label}
+                                                </option>
+                                            ))}
+                                        </TextField>
+                                    </Grid>
+                                </Grid>
+                                <Grid container >
+                                    <Grid item xs={4}><h5>Length</h5></Grid>
+                                    <Grid item xs={8}><TextField
+                                        required
+                                        id="outlined-required"
+                                        label="Requir"
+                                        defaultValue="Hello World"
+                                        variant="outlined" /></Grid>
+                                </Grid>
+                                <Checkbox value="bbb" onChange={(e) => alert(e.target.value)}></Checkbox>
+                            </form>
+
+
+
+
+
+                            <td>{tabledata[0].Metal}</td>
+                                        <td>{tabledata[0].Category}</td>
+                                        <td>{tabledata[0].Grade}</td>
+                                        <td>{tabledata[0].Length}</td>
+                                        <td>{tabledata[0].Dia1}</td>
+                                        <td>{tabledata[0].Dia2}</td>
+                                        <td>{tabledata[0].Width1}</td>
+                                        <td>{tabledata[0].Width2}</td>
+                                        <td>{tabledata[0].Thick}</td>
+                                        <td>{tabledata[0].Volume}</td>
+                                        <td>{tabledata[0].DEnsity}</td>
+                                        <td>{tabledata[0].Weight}</td>

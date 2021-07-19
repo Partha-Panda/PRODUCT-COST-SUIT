@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Padauk&display=swap');
+*{
+   
+   
+}
+.SplashContainer{
+   background: url("./assets/landing1.png");
+   background-size: cover;
+   
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    
+}
+.CenterdivSplash{
+    padding: 6px;
+    align-self: center;
+   
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    border-radius: 5px;
+    z-index: 100;
+}
+.CenterdivSplash h5{
+    color: white; 
+    margin: 0;
+    font-size:25px;
+    font-weight: 400;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    
+}
+.CenterdivSplash p{
+    margin: 25px 0;
+    text-transform: capitalize;
+    color: white; 
+    font-size:55px;
+    font-family: 'Padauk', sans-serif;
+}
+.CenterdivSplash button{
+    
+    position: relative;
+    width: 70px;
+    height: 38px;
+    left: 44%;
+    font-size: 18px;
+    background: #4b40e7;
+    border: none;
+    outline: none;
+    border-radius: 10%;
+}
