@@ -12,6 +12,7 @@ import Masterdatainsert from './Masterdatainsert';
 import Masterdataview from './Masterdataview';
 import Masterdataupdate from './Masterdataupdate';
 import MasterdataSingleview from "./MasterdataSingleview";
+import CostOperationInsert from "./CostOperationInsert";
 function App() {
   return (
     <div>
@@ -24,6 +25,7 @@ function App() {
           <Route path="/createitem" component={Masterdatainsert}></Route>
           <Route path="/updateitem" component={Masterdataupdate}></Route>
           <Route path="/viewitem" component={MasterdataSingleview}></Route>
+          <Route path="/Costoperationinsert" component={CostOperationInsert}></Route>
           <Route path="/" component={Splash}></Route>
           
           

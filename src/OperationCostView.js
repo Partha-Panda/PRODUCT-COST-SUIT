@@ -12,12 +12,18 @@ import { faSitemap, faPlus, faTrashAlt, faPenSquare, faEye } from "@fortawesome/
 import "./dashboard.css"
 
 import swal from 'sweetalert';
-export default function Masterdataview() {
+export default function OperationCostView() {
     const history = useHistory()
     const [tabledata, setTableData] = useState([])
-    const [SInum, setSInum] = useState({
-        SI: ''
-    })
+    useEffect(() => {
+
+        axios.get("./view.php").then(res => {
+
+            setTableData([...tabledata, ...res.data])
+        }).catch(err => console.log(err, "in error view"))
+
+    }, [])
+
     function dlt(e) {
         //e.preventDefault()
         var obj = {
@@ -66,14 +72,7 @@ export default function Masterdataview() {
             e
         })
     }
-    useEffect(() => {
 
-        axios.get("./view.php").then(res => {
-
-            setTableData([...tabledata, ...res.data])
-        }).catch(err => console.log(err, "in error view"))
-
-    }, [])
     return (
         <div>
             <Dashboardnav></Dashboardnav>
@@ -91,7 +90,7 @@ export default function Masterdataview() {
                             <Table striped bordered hover>
                                 <thead>
                                     <tr>
-                                        
+
                                         <th>SI</th>
                                         <th>Metal Code</th>
                                         <th>Metal</th>
@@ -104,7 +103,7 @@ export default function Masterdataview() {
                                     {tabledata.map((tabledata) => {
 
                                         return (<tr key={tabledata.SI}>
-                                            
+
                                             <td>{tabledata['SI']}</td>
                                             <td>{tabledata['Metalcode']}</td>
                                             <td>{tabledata['Metal']}</td>

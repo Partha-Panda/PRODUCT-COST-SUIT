@@ -48,7 +48,7 @@ export default function MasterdataSingleview(props) {
                                 <thead>
                                     <tr>
                                         <th>SI</th>
-                                        <th>Id</th>
+                                        <th>Metal Code</th>
                                         <th>Metal</th>
                                         <th>Category</th>
                                         <th>Grade</th>
