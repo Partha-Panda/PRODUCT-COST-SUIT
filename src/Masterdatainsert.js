@@ -195,9 +195,9 @@ export default function Masterdatainsert() {
                         <div className="dashboardTag"><FontAwesomeIcon icon={faSitemap} style={{ width: "2.25em" }} />Create item</div>
                         <div className="dashHeadTag">
                         <StylesProvider injectFirst>
-                            <form action="" className={classes.frm} onSubmit={handaleSubmit} autoComplete="on">
+                            <form action="" className={classes.frm} onSubmit={handaleSubmit} autoComplete="off">
                                 <Grid container className={classes.grditm}>
-                                    <Grid item xs={4}><h5>Metal</h5></Grid>
+                                    <Grid item xs={4}><h5>Metal*</h5></Grid>
                                     <Grid item xs={8}>
                                         <TextField
                                             className={classes.txtfld}
@@ -222,7 +222,7 @@ export default function Masterdatainsert() {
                                     </Grid>
                                 </Grid>
                                 <Grid container className={classes.grditm}>
-                                    <Grid item xs={4}><h5>Category</h5></Grid>
+                                    <Grid item xs={4}><h5>Category*</h5></Grid>
                                     <Grid item xs={8}>
                                         <TextField
                                             className={classes.txtfld}
@@ -247,7 +247,7 @@ export default function Masterdatainsert() {
                                     </Grid>
                                 </Grid>
                                 <Grid container className={classes.grditm}>
-                                    <Grid item xs={4}><h5>Grade</h5></Grid>
+                                    <Grid item xs={4}><h5>Grade*</h5></Grid>
                                     <Grid item xs={8}>
                                         <TextField
                                             className={classes.txtfld}

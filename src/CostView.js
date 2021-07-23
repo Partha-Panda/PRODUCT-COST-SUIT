@@ -10,9 +10,10 @@ import { Table } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSitemap, faPlus, faTrashAlt, faPenSquare, faEye } from "@fortawesome/free-solid-svg-icons"
 import "./dashboard.css"
-import TableScrollbar from 'react-table-scrollbar';
+
 import swal from 'sweetalert';
-export default function Masterdataview() {
+
+export default function CostView() {
     const history = useHistory()
     const [tabledata, setTableData] = useState([])
     const [SInum, setSInum] = useState({
@@ -50,19 +51,19 @@ export default function Masterdataview() {
         }
     }
     function createItem() {
-        history.push("/createitem")
+        history.push("/Costinsert")
     }
     function upadteItm(e) {
-        
+
 
         history.push({
-            pathname: '/updateitem',
+            pathname: '/CostUpdate',
             e
         })
     }
     function view(e) {
         history.push({
-            pathname: '/viewitem',
+            pathname: '/CostSview',
             e
         })
     }
@@ -74,6 +75,7 @@ export default function Masterdataview() {
         }).catch(err => console.log(err, "in error view"))
 
     }, [])
+
     return (
         <div>
             <Dashboardnav></Dashboardnav>
@@ -88,48 +90,53 @@ export default function Masterdataview() {
 
                         </div>
                         <div className="dashHeadTag">
-                            
                             <Table striped bordered hover>
                                 <thead>
                                     <tr>
-                                        
+
                                         <th>SI</th>
                                         <th>Metal Code</th>
-                                        <th>Metal</th>
-                                        <th>Category</th>
-                                        <th>Grade</th>
+                                        <th>Rate</th>
+                                        <th>GST %</th>
+                                        <th>Total Cost</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {tabledata.map((tabledata) => {
 
-                                        return (<tr key={tabledata.SI}>
-                                            
-                                            <td>{tabledata['SI']}</td>
-                                            <td>{tabledata['Metalcode']}</td>
-                                            <td>{tabledata['Metal']}</td>
-                                            <td>{tabledata['Category']}</td>
-                                            <td>{tabledata['Grade']}</td>
-                                            <td style={{display:"flex",justifyContent:"space-evenly"}}>
-                                                <button onClick={(e) => {
+                                        if (tabledata["Rate"] !== 0) {
+                                            return (
 
-                                                    view(tabledata.SI)
-                                                }} style={{ border: "none" }} >  <FontAwesomeIcon icon={faEye} style={{ color: "#f14627" }} /> </button>
-
-                                                <button style={{ border: "none" }} onClick={(e) => {
-                                                    e.preventDefault()
-                                                    upadteItm(tabledata.SI)
-                                                }}>  <FontAwesomeIcon icon={faPenSquare} style={{ color: "#f14627" }} /> </button>
-                                                <button onClick={(e) => {
-
-                                                    dlt(tabledata.SI)
-                                                }} style={{ border: "none" }}>
-                                                    <FontAwesomeIcon icon={faTrashAlt} style={{ color: "#f14627" }} />
-
-                                                </button>
-                                            </td>
-                                        </tr>)
+                                                <tr key={tabledata.SI}>
+    
+                                                    <td>{tabledata['SI']}</td>
+                                                    <td>{tabledata['Metalcode']}</td>
+                                                    <td>{tabledata['Rate']}</td>
+                                                    <td>{tabledata['GST']}</td>
+                                                    <td>{tabledata['TotalCost']}</td>
+                                                    <td style={{ display: "flex", justifyContent: "space-evenly" }}>
+                                                        <button onClick={(e) => {
+    
+                                                            view(tabledata.SI)
+                                                        }} style={{ border: "none" }} >  <FontAwesomeIcon icon={faEye} style={{ color: "#f14627" }} /> </button>
+    
+                                                        <button style={{ border: "none" }} onClick={(e) => {
+                                                            e.preventDefault()
+                                                            upadteItm(tabledata)
+                                                        }}>  <FontAwesomeIcon icon={faPenSquare} style={{ color: "#f14627" }} /> </button>
+                                                        <button onClick={(e) => {
+    
+                                                            dlt(tabledata.SI)
+                                                        }} style={{ border: "none" }}>
+                                                            <FontAwesomeIcon icon={faTrashAlt} style={{ color: "#f14627" }} />
+    
+                                                        </button>
+                                                    </td>
+                                                </tr>
+    
+                                            )
+                                        }
                                     })
                                     }
                                 </tbody>

@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import {
+    useHistory
+} from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import './masterdatainsert.css'
@@ -15,17 +18,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudUploadAlt, faSitemap } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function CostOperationInsert() {
+export default function OperationCostUpdate(props) {
     const [opName, setOpname] = useState()
     const [costHr, setcostHr] = useState()
+    const [opCode,setopCode]=useState()
+    const history=useHistory()
+    useEffect(() => {
+        if (props.location.e.SI === undefined) {
+            history.push("./OperationCostView")
+        }
+        else {
+            setOpname(props.location.e. OperationName)
+            setcostHr(props.location.e.CostHr)
+            setopCode(props.location.e.OperationCode)
+           
+        }
+    }, [])
     function handaleSubmit(e) {
         e.preventDefault()
         const obj = {
+            SI:props.location.e.SI,
             operation: opName,
             cost:costHr
         }
         console.log(obj)
-        axios.post("operatincost/operationinsert.php",obj).then(res=> swal("success")).catch(err=> swal("faild", "", "warning"))
+        axios.post("operatincost/operationupdate.php",obj).then(res=> swal("success")).catch(err=> swal("faild", "", "warning"))
     }
     
     return (
@@ -35,10 +52,20 @@ export default function CostOperationInsert() {
                 <Dashboardsidemenu />
                 <Grid container item xs={10}  direction="column" alignItems="center">
                     <div className="dashboardMidCont">
-                        <div className="dashboardTag"><FontAwesomeIcon icon={faSitemap} style={{ width: "2.25em" }} />Create item</div>
+                        <div className="dashboardTag"><FontAwesomeIcon icon={faSitemap} style={{ width: "2.25em" }} />Update item</div>
                         <div className="dashHeadTag">
 
-                            <Form style={{paddingTop:"5%"}} onSubmit={handaleSubmit} autoComplete="off">
+                            <Form style={{ paddingTop: "5%" }} onSubmit={handaleSubmit} autoComplete="off">
+                                
+                            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                                    <Form.Label column sm="5">
+                                        Operation Code:
+                                    </Form.Label>
+                                    <Col sm="7">
+                                        <Form.Control placeholder="" onChange={(e)=> setOpname(e.target.value)} value={opCode} readOnly/>
+                                    </Col>
+                                </Form.Group>
+
                                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                                     <Form.Label column sm="5">
                                         Operation Name:
@@ -61,7 +88,7 @@ export default function CostOperationInsert() {
                                         
                                     </Form.Label>
                                     <Col sm="7">
-                                    <Button type="submit" variant="primary"><FontAwesomeIcon icon={faCloudUploadAlt} style={{ padding: "0px" ,margin: "0px 6px 0px 0px",}} />Create</Button>
+                                    <Button type="submit" variant="primary"><FontAwesomeIcon icon={faCloudUploadAlt} style={{ padding: "0px" ,margin: "0px 6px 0px 0px",}} />Update</Button>
                                     </Col>
                                 </Form.Group>
                                

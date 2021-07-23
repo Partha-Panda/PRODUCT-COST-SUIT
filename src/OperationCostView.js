@@ -17,7 +17,7 @@ export default function OperationCostView() {
     const [tabledata, setTableData] = useState([])
     useEffect(() => {
 
-        axios.get("./view.php").then(res => {
+        axios.get("operatincost/operationview.php").then(res => {
 
             setTableData([...tabledata, ...res.data])
         }).catch(err => console.log(err, "in error view"))
@@ -31,7 +31,7 @@ export default function OperationCostView() {
         }
 
         try {
-            axios.post("./delte.php", obj).then(res => {
+            axios.post("operatincost/operationcostdelete.php", obj).then(res => {
                 swal({
                     title: "Are you sure?",
                     text: "Once deleted, you will not be able to recover this .",
@@ -56,19 +56,20 @@ export default function OperationCostView() {
         }
     }
     function createItem() {
-        history.push("/createitem")
+        history.push("/Costoperationinsert")
     }
     function upadteItm(e) {
-        
+        console.log(e)
 
         history.push({
-            pathname: '/updateitem',
+            pathname: '/OperationUpdate',
             e
         })
     }
     function view(e) {
+
         history.push({
-            pathname: '/viewitem',
+            pathname: '/OperationSingleView',
             e
         })
     }
@@ -92,11 +93,11 @@ export default function OperationCostView() {
                                     <tr>
 
                                         <th>SI</th>
-                                        <th>Metal Code</th>
-                                        <th>Metal</th>
-                                        <th>Category</th>
-                                        <th>Grade</th>
+                                        <th>Operation Code</th>
+                                        <th>OperationName</th>
+                                        <th>Cost/hr(₹)</th>
                                         <th>Action</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -105,19 +106,19 @@ export default function OperationCostView() {
                                         return (<tr key={tabledata.SI}>
 
                                             <td>{tabledata['SI']}</td>
-                                            <td>{tabledata['Metalcode']}</td>
-                                            <td>{tabledata['Metal']}</td>
-                                            <td>{tabledata['Category']}</td>
-                                            <td>{tabledata['Grade']}</td>
-                                            <td>
+                                            <td>{tabledata['OperationCode']}</td>
+                                            <td>{tabledata['OperationName']}</td>
+                                            <td>{tabledata['CostHr']}</td>
+                                            
+                                            <td style={{display:"flex",justifyContent:"space-evenly"}}>
                                                 <button onClick={(e) => {
 
-                                                    view(tabledata.SI)
+                                                    view(tabledata)
                                                 }} style={{ border: "none" }} >  <FontAwesomeIcon icon={faEye} style={{ color: "#f14627" }} /> </button>
 
                                                 <button style={{ border: "none" }} onClick={(e) => {
                                                     e.preventDefault()
-                                                    upadteItm(tabledata.SI)
+                                                    upadteItm(tabledata)
                                                 }}>  <FontAwesomeIcon icon={faPenSquare} style={{ color: "#f14627" }} /> </button>
                                                 <button onClick={(e) => {
 

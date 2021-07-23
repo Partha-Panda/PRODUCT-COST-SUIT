@@ -15,7 +15,7 @@ import axios from 'axios';
 import { StylesProvider } from "@material-ui/core/styles";
 import { Button } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCloudUploadAlt  } from '@fortawesome/free-solid-svg-icons'
+import { faCloudUploadAlt ,faSitemap } from '@fortawesome/free-solid-svg-icons'
 
 function Volume(metal, category, grade, length, Dia1, Dia2, Width1, Width2, Thick) {
     switch (metal) {
@@ -219,13 +219,13 @@ export default function Masterdataupdate(props) {
             <Dashboardsidemenu />
             <Grid container item xs={10} className={classes.grdd} direction="column" alignItems="center">
                 <div className="dashboardMidCont">
-                    <div className="dashboardTag">Create item</div>
+                    <div className="dashboardTag"><FontAwesomeIcon icon={faSitemap} style={{ width: "2.25em" }} />Update item</div>
                     <div className="dashHeadTag">
                     <StylesProvider injectFirst>
                         <form action="" className={classes.frm} onSubmit={handaleSubmit} autoComplete="off">
 
                             <Grid container className={classes.grditm}>
-                                <Grid item xs={4}><h5>Metal</h5></Grid>
+                                <Grid item xs={4}><h5>Metal*</h5></Grid>
                                 <Grid item xs={8}>
                                     <TextField
                                         className={classes.txtfld}
@@ -250,7 +250,7 @@ export default function Masterdataupdate(props) {
                                 </Grid>
                             </Grid>
                             <Grid container className={classes.grditm}>
-                                <Grid item xs={4}><h5>Category</h5></Grid>
+                                <Grid item xs={4}><h5>Category*</h5></Grid>
                                 <Grid item xs={8}>
                                     <TextField
                                         className={classes.txtfld}
@@ -275,7 +275,7 @@ export default function Masterdataupdate(props) {
                                 </Grid>
                             </Grid>
                             <Grid container className={classes.grditm}>
-                                <Grid item xs={4}><h5>Grade</h5></Grid>
+                                <Grid item xs={4}><h5>Grade*</h5></Grid>
                                 <Grid item xs={8}>
                                     <TextField
                                         className={classes.txtfld}
