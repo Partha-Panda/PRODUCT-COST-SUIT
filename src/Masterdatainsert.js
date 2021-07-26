@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import './masterdatainsert.css'
@@ -18,28 +18,28 @@ import { faCloudUploadAlt,faSitemap  } from '@fortawesome/free-solid-svg-icons'
 function Volume(metal, category, grade, length, Dia1, Dia2, Width1, Width2, Thick) {
     switch (metal) {
         case 'Plate':
-            if (length !== undefined && Width2 !== undefined && Thick !== undefined)
+            if (length !== undefined && Width2 !== undefined && Thick !== undefined && length.trim()  && Width2.trim() && Thick.trim())
                 return parseInt(length) * parseFloat(Width2) * parseFloat(Thick)
             else
                 throw new Error("jj")
 
         case 'Steel Rod':
-            if (length !== undefined && Dia1!==undefined )
+            if ((length !== undefined && Dia1!==undefined) && (length.trim() && Dia1.trim()) )
                 return parseInt(length) * ( ( parseFloat(Dia1) * parseFloat(Dia1) )/2 )
             else
                 throw new Error("jj")
         case 'Hollow Cylinder Pipe':
-            if (length !== undefined && Dia1!==undefined && Dia2!==undefined)
+            if ((length !== undefined && Dia1!==undefined && Dia2!==undefined) && (length.trim() && Dia1.trim() && Dia2.trim()))
                 return 3.14 * parseInt(length) * ( ( ( parseFloat(Dia1))/2 * (parseFloat(Dia1))/2 )    - ( ( parseFloat(Dia2))/2 * (parseFloat(Dia2))/2 ))
             else
                 throw new Error("jj")
         case 'Square Pipe Solid':
-            if (length !== undefined && Width2 !== undefined && Width2 !== undefined)
+            if ((length !== undefined && Width2 !== undefined && Width2 !== undefined) && (length.trim() && Width2.trim() && Width2.trim() ))
                 return parseInt(length) * (parseFloat(Width2) * parseFloat(Width2))
             else
                 throw new Error("jj")
         case 'I Channel':
-            if (length !== undefined && Width2 !== undefined && Thick !== undefined)
+            if ((length !== undefined && Width2 !== undefined && Thick !== undefined) && (length.trim() && Width2.trim() && Thick.trim()))
                 return 10
             else
                 throw new Error("jj")
@@ -64,13 +64,15 @@ export default function Masterdatainsert() {
     const [metal, setMetal] = useState("")
     const [category, setCategory] = useState("")
     const [grade, setGrade] = useState("")
-    const [length, setLength] = useState()
-    const [Dia1, setDia1] = useState()
-    const [Dia2, setDia2] = useState()
-    const [Width1, setWidth1] = useState()
-    const [Width2, setWidth2] = useState()
-    const [Thick, setThick] = useState()
-   
+    const [length, setLength] = useState("")
+    const [Dia1, setDia1] = useState("")
+    const [Dia2, setDia2] = useState("")
+    const [Width1, setWidth1] = useState("")
+    const [Width2, setWidth2] = useState("")
+    const [Thick, setThick] = useState("")
+    useEffect(() => {
+       
+   },[])
     const handaleSubmit = (e) => {
         e.preventDefault()
         try {

@@ -20,6 +20,9 @@ import MaterialCostInsert from "./MaterialCostInsert";
 import CostView from "./CostView";
 import MaterialCostSingleView from "./MaterialCostSingleView";
 import MaterialCostUpadte from "./MaterialCostUpadte";
+import CalculationCostOperationInsert from "./CalculationCostOperationInsert";
+import CalculationCostview from "./CalculationCostview";
+import CalculationCostSingleView from "./CalculationCostSingleView";
 function App() {
   return (
     <div>
@@ -40,6 +43,9 @@ function App() {
           <Route path="/Cosview" component={CostView}></Route>
           <Route path="/CostSview" component={MaterialCostSingleView}></Route>
           <Route path="/CostUpdate" component={MaterialCostUpadte}></Route>
+          <Route path="/calculationCost" component={CalculationCostOperationInsert}></Route>
+          <Route path="/calculationCostView" component={CalculationCostview}></Route>
+          <Route path="/calculationSCostView" component={CalculationCostSingleView}></Route>
           <Route path="/" component={Splash}></Route>
           
           

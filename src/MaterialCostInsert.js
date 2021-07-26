@@ -17,7 +17,7 @@ import { faCloudUploadAlt, faSitemap } from '@fortawesome/free-solid-svg-icons'
 import { Button, Form, Row, Col } from "react-bootstrap"
 
 export default function MaterialCostInsert() {
-    const [top100Films, setTop] = useState()
+    const [topCode, setTop] = useState()
     const [metal, setMetal] = useState("")
     const [category, setCetagory] = useState("")
     const [volume, setVolume] = useState("")
@@ -34,7 +34,7 @@ export default function MaterialCostInsert() {
         axios.get("./viewcost.php").then(res => {
 
             setTop([...res.data])
-            console.log(top100Films)
+            console.log(topCode)
         }).catch(err => console.log(err, "in error view"))
 
     }, [])
@@ -64,7 +64,7 @@ export default function MaterialCostInsert() {
     function handaleCostdata(e) {
         e.preventDefault()
         console.log(masterData)
-        const amount = masterData.Weight * rate *quantity
+        const amount = masterData.Weight * rate * quantity
         const gstAmount = (amount * gst) / 100
         const amountgst = amount + gstAmount
         const totalcost = parseInt(amountgst) + parseInt(transportation)
@@ -102,7 +102,7 @@ export default function MaterialCostInsert() {
                                         <Autocomplete
                                             onChange={metalCodeChng}
                                             id="combo-box-demo"
-                                            options={top100Films}
+                                            options={topCode}
                                             getOptionLabel={(option) => option.Metalcode}
 
                                             style={{ width: "90%" }}
@@ -213,7 +213,7 @@ export default function MaterialCostInsert() {
         //     {/* <Autocomplete
         //         onChange={(event, value) => console.log(value)}
         //         id="combo-box-demo"
-        //         options={top100Films}
+        //         options={topCode}
         //         getOptionLabel={(option) => option.Metalcode}
         //         style={{ width: 300 }}
         //         renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}

@@ -98,7 +98,7 @@ export default function Dashboardsidemenu() {
                             <Accordion.Collapse eventKey="1">
                                 <div style={{ background: "rgb(247, 247, 247)", padding: " 3px 0px 4px 47px", fontSize: "110%" }}>
                                     <Card.Body style={{ padding: "4px" }} onClick={()=> history.push("./Cosview")}> <FontAwesomeIcon icon={faPlusSquare} style={{ padding: "2px" }} />Material Cost </Card.Body>
-                                    <Card.Body style={{ padding: "4px" }}><FontAwesomeIcon icon={faPlusSquare} style={{ padding: "2px" }} /> Operation Cost</Card.Body>
+                                    <Card.Body style={{ padding: "4px" }} onClick={()=> history.push("./calculationCostView")}><FontAwesomeIcon icon={faPlusSquare} style={{ padding: "2px" }} /> Operation Cost</Card.Body>
                                 </div>
                             </Accordion.Collapse>
                         </Card>
