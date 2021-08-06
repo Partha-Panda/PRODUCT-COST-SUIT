@@ -26,7 +26,7 @@ export default function MasterdataSingleview(props) {
                 const ob = { ...res.data[0] }
                 //setTableData([...tabledata, ...res.data])
                 setTableData([...tabledata, ...res.data])
-                console.log(tabledata)
+               
             }).catch(err => console.log(err, "in error view"))
         }
 

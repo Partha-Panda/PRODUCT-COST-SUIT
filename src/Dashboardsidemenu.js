@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState,useEffect}from 'react'
 import {
     useHistory
 } from "react-router-dom";
@@ -12,11 +12,21 @@ import { faTh, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 import "./dashboard.css"
 import "./masterdata.css"
-import { Accordion, Card } from "react-bootstrap";
+import { Accordion, Card,Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Adduser from './Adduser';
 
 export default function Dashboardsidemenu() {
     const history = useHistory()
+    const [admin, setLogedinn] = useState(false)
+    useEffect(() => {
+        console.log('emaillll', localStorage.getItem("email"))
+        var x = localStorage.getItem("email")
+        if (x ==="info@spaatech.net") {
+            setLogedinn(true)
+        }
+        
+    }, [])
     const style = makeStyles({
         typo: {
 
@@ -76,15 +86,15 @@ export default function Dashboardsidemenu() {
 
                     <Accordion>
                         <Card>
-                            <Accordion.Toggle as={Card.Header} eventKey="0" style={{ fontSize: "115%" }}>
+                            <Accordion.Toggle as={Card.Header} eventKey="0" style={{ fontSize: "115%",cursor:"pointer" }}>
                                 <FontAwesomeIcon icon={faCheck} style={{ padding: "2px" }} /> Master Data
                                 <FontAwesomeIcon style={{ float: "right", margin: "0" }} icon={faCaretDown} />
                             </Accordion.Toggle>
 
                             <Accordion.Collapse eventKey="0" >
                                 <div style={{ background: "rgb(247, 247, 247)", padding: " 3px 0px 4px 47px", fontSize: "110%" }}>
-                                    <Card.Body style={{ padding: "4px" }} onClick={handaleii}><FontAwesomeIcon icon={faPlusSquare} style={{ padding: "2px" }} />Material Operation </Card.Body>
-                                    <Card.Body style={{ padding: "4px" }} onClick={()=> history.push("/OperationCostView")} ><FontAwesomeIcon icon={faPlusSquare} style={{ padding: "2px" }} />Cost Operation</Card.Body>
+                                    <Card.Body style={{ padding: "4px",cursor:"pointer" }} onClick={handaleii}><FontAwesomeIcon icon={faPlusSquare} style={{ padding: "2px" }} />Material Operation </Card.Body>
+                                    <Card.Body style={{ padding: "4px",cursor:"pointer" }} onClick={()=> history.push("/OperationCostView")} ><FontAwesomeIcon icon={faPlusSquare} style={{ padding: "2px" }} />Cost Operation</Card.Body>
                                 </div>
                             </Accordion.Collapse>
                         </Card>
@@ -97,12 +107,13 @@ export default function Dashboardsidemenu() {
 
                             <Accordion.Collapse eventKey="1">
                                 <div style={{ background: "rgb(247, 247, 247)", padding: " 3px 0px 4px 47px", fontSize: "110%" }}>
-                                    <Card.Body style={{ padding: "4px" }} onClick={()=> history.push("./Cosview")}> <FontAwesomeIcon icon={faPlusSquare} style={{ padding: "2px" }} />Material Cost </Card.Body>
-                                    <Card.Body style={{ padding: "4px" }} onClick={()=> history.push("./calculationCostView")}><FontAwesomeIcon icon={faPlusSquare} style={{ padding: "2px" }} /> Operation Cost</Card.Body>
+                                    <Card.Body style={{ padding: "4px",cursor:"pointer" }} onClick={()=> history.push("./Cosview")}> <FontAwesomeIcon icon={faPlusSquare} style={{ padding: "2px" }} />Material Cost </Card.Body>
+                                    <Card.Body style={{ padding: "4px" ,cursor:"pointer"}} onClick={()=> history.push("./calculationCostView")}><FontAwesomeIcon icon={faPlusSquare} style={{ padding: "2px" }} /> Operation Cost</Card.Body>
                                 </div>
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>
+                    {admin? <Button variant="primary" onClick={()=>history.push('./adduser')}>Add User</Button> :<div></div>}
                 </List>
 
             </div>

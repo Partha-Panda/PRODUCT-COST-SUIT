@@ -11,7 +11,7 @@ import { Table } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSitemap, faPlus, faTrashAlt, faPenSquare, faEye } from "@fortawesome/free-solid-svg-icons"
 import "./dashboard.css"
-
+import { Scrollbars } from 'react-custom-scrollbars';
 
 export default function MaterialCostSingleView(props) {
     const SI = props.location.e
@@ -31,6 +31,20 @@ export default function MaterialCostSingleView(props) {
         }
 
     }, [])
+    const renderThumb = ({ style, ...props }) => {
+        const thumbStyle = {
+          borderRadius: 6,
+          backgroundColor: 'rgba(35, 49, 86, 0.8)'
+        };
+        return <div style={{ ...style, ...thumbStyle }} {...props} />;
+    };
+    const CustomScrollbars = props => (
+        <Scrollbars
+          renderThumbHorizontal={renderThumb}
+          
+          {...props}
+        />
+      );
     return (
         <div>
             <Dashboardnav></Dashboardnav>
@@ -42,7 +56,8 @@ export default function MaterialCostSingleView(props) {
                             <FontAwesomeIcon icon={faSitemap} style={{ width: "2.25em" }} />Items
 
                         </div>
-                        <div className="dashHeadTag" style={{overflowX: "scroll",paddingLeft:"35%"}}>
+                        <div className="dashHeadTag" style={{ alignItems: "flex-start",height:"180px" }}>
+                        <CustomScrollbars >
                             <Table  striped bordered hover >
                                 <thead>
                                     <tr>
@@ -103,7 +118,8 @@ export default function MaterialCostSingleView(props) {
                                     })
                                     }
                                 </tbody>
-                            </Table>
+                                </Table>
+                               </CustomScrollbars>
                         </div>
 
                     </div>

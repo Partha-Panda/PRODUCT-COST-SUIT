@@ -19,21 +19,27 @@ export default function Login() {
     }, [])
     function handaleLogin(e) {
         e.preventDefault()
-        const obj = {
-            email: email,
-            password: password
+        
+        if (email===undefined || email==="") {
+            swal("enter email and password", "", "warning")
         }
-        const request = axios.post("/insert.php", obj).then(res => {
-            history.push("./dashboard")
-            localStorage.setItem("email", res.data)
-            console.log(res.data)
-        }
-        )
-            .catch(error => {
-
-                swal("invaild email or password", "", "warning")
+        else {
+            const obj = {
+                email: email,
+                password: password
+            }
+            const request = axios.post("/insert.php", obj).then(res => {
+                history.push("./dashboard")
+                localStorage.setItem("email", res.data)
+                console.log(res.data)
             }
             )
+                .catch(error => {
+    
+                    swal("invaild email or password", "", "warning")
+                }
+                )
+       }
 
 
     }
@@ -57,15 +63,15 @@ export default function Login() {
                     <form action="">
                         <div className="emaildiv">
                             <label for="email" id="emaillabel">E-mail Address</label>
-                            <input type="text" placeholder="" name="email" id="email" onChange={emailChng} value={email} />
+                            <input type="email" placeholder="" name="email" id="email" onChange={emailChng} value={email} required={true} />
                         </div>
                         <div className="emaildiv">
                             <label for='ps' id="psl">Password</label>
-                            <input type="text" id="ps" onChange={passwordChng} value={password} />
+                            <input type="text" id="ps" onChange={passwordChng} value={password} required={true} />
                         </div>
 
 
-                        <button onClick={handaleLogin} id="loginbtn" >Login</button>
+                        <button onClick={handaleLogin} type="submit" id="loginbtn" >Logn</button>
                     </form>
                 </div>
             </div>

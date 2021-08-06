@@ -11,13 +11,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSitemap, faPlus, faTrashAlt, faPenSquare, faEye } from "@fortawesome/free-solid-svg-icons"
 import "./dashboard.css"
 import TableScrollbar from 'react-table-scrollbar';
+import { Scrollbars } from 'react-custom-scrollbars';
 import swal from 'sweetalert';
 export default function Masterdataview() {
     const history = useHistory()
     const [tabledata, setTableData] = useState([])
-    const [SInum, setSInum] = useState({
-        SI: ''
-    })
+    const renderThumb = ({ style, ...props }) => {
+        const thumbStyle = {
+          borderRadius: 6,
+          backgroundColor: 'rgba(35, 49, 86, 0.8)'
+        };
+        return <div style={{ ...style, ...thumbStyle }} {...props} />;
+    };
+    const CustomScrollbars = props => (
+        <Scrollbars
+          renderThumbHorizontal={renderThumb}
+          renderThumbVertical={renderThumb}
+          {...props}
+        />
+      );
     function dlt(e) {
         //e.preventDefault()
         var obj = {
@@ -25,25 +37,25 @@ export default function Masterdataview() {
         }
 
         try {
-            axios.post("./delte.php", obj).then(res => {
-                swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this .",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            window.location.reload();
 
-                        } else {
-                            swal("not deleted!");
-                        }
-                    });
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this .",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        axios.post("./delte.php", obj).then(res => {}).catch(err => swal("faild", "", "warning"))
 
-            }).catch(err => swal("faild", "", "warning"))
+                        window.location.reload();
 
+                    } else {
+                        swal("not deleted!");
+                    }
+                });
+            
         }
         catch (rr) {
 
@@ -87,18 +99,19 @@ export default function Masterdataview() {
 
 
                         </div>
-                        <div className="dashHeadTag">
-                            
-                            <Table striped bordered hover>
-                                <thead>
-                                    <tr>
+                       
+                        <div className="dashHeadTag" style={{height:"400px",flexDirection:"row",alignItems:"flex-start"}}  >
+                        <CustomScrollbars autoHide autoHideTimeout={500} autoHideDuration={200}>
+                            <Table  striped bordered hover >
+                                <thead className="thd">
+                                    <tr >
                                         
-                                        <th>SI</th>
-                                        <th>Metal Code</th>
-                                        <th>Metal</th>
-                                        <th>Category</th>
-                                        <th>Grade</th>
-                                        <th>Action</th>
+                                        <th className="thh" style={{background:"rgb(253 251 246)"}}>SI</th>
+                                        <th className="thh" style={{background:"rgb(253 251 246)"}}>Metal Code</th>
+                                        <th className="thh" style={{background:"rgb(253 251 246)"}}>Metal</th>
+                                        <th className="thh" style={{background:"rgb(253 251 246)"}}>Category</th>
+                                        <th className="thh" style={{background:"rgb(253 251 246)"}}>Grade</th>
+                                        <th className="thh" style={{background:"rgb(253 251 246)"}}>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -133,8 +146,10 @@ export default function Masterdataview() {
                                     })
                                     }
                                 </tbody>
-                            </Table>
-                        </div>
+                                </Table>
+                                </CustomScrollbars>
+                            </div>
+                           
 
                     </div>
                 </Grid>

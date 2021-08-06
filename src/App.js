@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route
 } from "react-router-dom";
@@ -23,10 +23,12 @@ import MaterialCostUpadte from "./MaterialCostUpadte";
 import CalculationCostOperationInsert from "./CalculationCostOperationInsert";
 import CalculationCostview from "./CalculationCostview";
 import CalculationCostSingleView from "./CalculationCostSingleView";
+import CalculationCostUpadte from "./CalculationCostUpadte";
+import Adduser from "./Adduser";
 function App() {
   return (
     <div>
-      <Router>
+      <HashRouter hashType="noslash">
         <Switch>
          
           <Route path="/login" component={Login}></Route>
@@ -46,11 +48,13 @@ function App() {
           <Route path="/calculationCost" component={CalculationCostOperationInsert}></Route>
           <Route path="/calculationCostView" component={CalculationCostview}></Route>
           <Route path="/calculationSCostView" component={CalculationCostSingleView}></Route>
+          <Route path="/calculationCostUpdate" component={CalculationCostUpadte}></Route>
+          <Route path="/adduser" component={Adduser}></Route>
           <Route path="/" component={Splash}></Route>
           
           
         </Switch>
-      </Router>
+      </HashRouter>
       
     </div>
   );

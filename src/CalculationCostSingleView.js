@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 import React, { useEffect, useState } from 'react'
 import {
     useHistory
@@ -22,7 +22,7 @@ export default function CalculationCostSingleView(props) {
         }
         else {
             setTableData([...tabledata, SI])
-            console.log(SI)
+            
         }
 
     }, [])
@@ -46,7 +46,7 @@ export default function CalculationCostSingleView(props) {
                                         <th>Operation Code</th>
                                         <th>Operation Name</th>
                                         <th>Cost/hr(₹)</th>
-                                        <th>OperationTime</th>
+                                        <th>OperationTime(hr)</th>
                                         <th>Total Cost</th>
 
                                     </tr>

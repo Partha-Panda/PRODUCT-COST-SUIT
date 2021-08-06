@@ -44,3 +44,11 @@
     color: rgb(45, 147, 243);
     
 }
+.thd th{
+    position: sticky;
+    top: 0;
+    background: rgb(12, 8, 8);
+}
+.thh{
+    background: rgb(143, 141, 141);
+}

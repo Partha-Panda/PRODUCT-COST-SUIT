@@ -1,9 +1,8 @@
+
 import React, { useState, useEffect } from 'react'
 import {
     useHistory
 } from "react-router-dom";
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import './masterdatainsert.css'
 import Grid from '@material-ui/core/Grid';
 import Dashboardsidemenu from './Dashboardsidemenu';
@@ -12,18 +11,19 @@ import swal from 'sweetalert';
 import "./masterdata.css"
 import "./dashboard.css"
 import axios from 'axios';
-import { StylesProvider } from "@material-ui/core/styles";
 import { Button,Form,Row,Col } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudUploadAlt, faSitemap } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function OperationCostUpdate(props) {
+export default function CalculationCostUpadte(props) {
     const [opName, setOpname] = useState()
     const [costHr, setcostHr] = useState()
-    const [opCode,setopCode]=useState()
+    const [opCode, setopCode] = useState()
+    const [operationTime, setcostOpTime] = useState()
     const history=useHistory()
     useEffect(() => {
+        console.log(props.location.e)
         if (props.location.e === undefined) {
             history.push("./OperationCostView")
         }
@@ -31,18 +31,21 @@ export default function OperationCostUpdate(props) {
             setOpname(props.location.e. OperationName)
             setcostHr(props.location.e.CostHr)
             setopCode(props.location.e.OperationCode)
+            setcostOpTime(props.location.e.OperationTime)
            
         }
     }, [])
     function handaleSubmit(e) {
         e.preventDefault()
+        const totalCost = props.location.e.CostHr * operationTime
+        const Si=props.location.e.SI
         const obj = {
-            SI:props.location.e.SI,
-            operation: opName,
-            cost:costHr
+            operationTime,
+            totalCost,
+            Si
         }
+        axios.post("calcultion/calculationcostupdateinsert.php",obj).then(res=> swal("successfully Updated!", "","success")).catch(err=> swal("faild", "", "warning"))
         console.log(obj)
-        axios.post("operatincost/operationupdate.php",obj).then(res=> swal("success")).catch(err=> swal("faild", "", "warning"))
     }
     
     return (
@@ -83,6 +86,14 @@ export default function OperationCostUpdate(props) {
                                         <Form.Control  placeholder="" onChange={(e)=> setcostHr(e.target.value)} value={costHr} />
                                     </Col>
                                 </Form.Group>
+                                <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                    <Form.Label column sm="5">
+                                    Operation time(hr):
+                                    </Form.Label>
+                                    <Col sm="7">
+                                        <Form.Control  placeholder="" onChange={(e)=> setcostOpTime(e.target.value)}  value={operationTime} />
+                                    </Col>
+                                </Form.Group>
                                 <Form.Group as={Row} className="mb-3" >
                                 <Form.Label column sm="5">
                                         
@@ -101,3 +112,32 @@ export default function OperationCostUpdate(props) {
         </div>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React from 'react'
+
+// export default function CalculationCostUpadte() {
+//     return (
+//         <div>
+            
+//         </div>
+//     )
+// }

@@ -63,7 +63,7 @@ export default function CalculationCostview() {
         console.log(e)
 
         history.push({
-            pathname: '/OperationUpdate',
+            pathname: '/calculationCostUpdate',
             e
         })
     }
@@ -96,7 +96,7 @@ export default function CalculationCostview() {
                                         <th>SI</th>
                                         <th>Operation Code</th>
                                         <th>OperationName</th>
-                                        <th>OperationTime</th>
+                                        <th>OperationTime(hr)</th>
                                         <th>Total Cost</th>
                                         <th>Action</th>
                                        

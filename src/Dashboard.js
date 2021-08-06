@@ -16,7 +16,7 @@ export default function Dashboard() {
         console.log('emaillll', localStorage.getItem("email"))
         var x = localStorage.getItem("email")
         if (x === undefined || x === null) {
-            console.log("xx", x)
+            
             setLogedinn(true)
 
         }

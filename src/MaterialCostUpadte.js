@@ -41,7 +41,7 @@ export default function MaterialCostUpadte(props) {
     }, [])
  
     useEffect(() => {
-        if (props.location.e.SI === undefined) {
+        if (props.location.e === undefined) {
             history.push("./CostView")
         }
         else {
@@ -83,7 +83,8 @@ export default function MaterialCostUpadte(props) {
         const gstAmount = (amount * gst) / 100
         const amountgst = amount + gstAmount
         const totalcost = parseInt(amountgst) + parseInt(transportation)
-        const Si=masterData.SI
+        const Si = masterData.SI
+        console.log(gst)
         const obj = {
             amount,
             gstAmount,

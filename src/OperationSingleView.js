@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 import React, { useEffect, useState } from 'react'
 import {
     useHistory
@@ -8,7 +8,7 @@ import Dashboardnav from './Dashboardnav';
 import Grid from '@material-ui/core/Grid';
 import { Table } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSitemap, faPlus, faTrashAlt, faPenSquare, faEye } from "@fortawesome/free-solid-svg-icons"
+import { faSitemap } from "@fortawesome/free-solid-svg-icons"
 import "./dashboard.css"
 
 

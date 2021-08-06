@@ -9,7 +9,6 @@ import swal from 'sweetalert';
 import "./masterdata.css"
 import "./dashboard.css"
 import axios from 'axios';
-import { StylesProvider } from "@material-ui/core/styles";
 import { Button,Form,Row,Col } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudUploadAlt, faSitemap } from '@fortawesome/free-solid-svg-icons'
@@ -24,7 +23,7 @@ export default function CostOperationInsert() {
             operation: opName,
             cost:costHr
         }
-        console.log(obj)
+        
         axios.post("operatincost/operationinsert.php",obj).then(res=> swal("success")).catch(err=> swal("faild", "", "warning"))
     }
     

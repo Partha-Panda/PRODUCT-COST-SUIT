@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+
 import {
     useHistory
 } from "react-router-dom";
@@ -13,7 +13,6 @@ import swal from 'sweetalert';
 import "./masterdata.css"
 import "./dashboard.css"
 import axios from 'axios';
-import { StylesProvider } from "@material-ui/core/styles";
 import { Button,Form,Row,Col } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudUploadAlt, faSitemap } from '@fortawesome/free-solid-svg-icons'
@@ -31,7 +30,7 @@ export default function CalculationCostOperationInsert() {
         axios.get("operatincost/viewOpcode.php").then(res => {
 
             setTop([...res.data])
-            console.log(top100Films)
+           
         }).catch(err => console.log(err, "in error view"))
 
     }, [])

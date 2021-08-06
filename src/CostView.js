@@ -16,9 +16,7 @@ import swal from 'sweetalert';
 export default function CostView() {
     const history = useHistory()
     const [tabledata, setTableData] = useState([])
-    const [SInum, setSInum] = useState({
-        SI: ''
-    })
+
     function dlt(e) {
         //e.preventDefault()
         var obj = {
